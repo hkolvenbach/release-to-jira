@@ -14,9 +14,9 @@ print("Release Issues:")
 pprint(changes)
 
 for change in changes:
-    issue_id = extract_issue_id(change["title"])
-    if not issue_id:
-        print("No issue id:", change["title"])
+    issue_id = extract_issue_id(change["content"])
+    if not change.get("issue_id"):
+        print("No issue id:", change["content"])
         continue
     print("Updating", issue_id)
     add_release_to_issue(release_name, issue_id)
